@@ -27,6 +27,8 @@ class _AppState extends State<App> {
     });
   }
 
+  TabData _tabBtn(IconData icon) => TabData(iconData: icon, title: "");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +37,10 @@ class _AppState extends State<App> {
       ),
       bottomNavigationBar: FancyBottomNavigation(
         tabs: [
-          TabData(iconData: Icons.map, title: ""),
-          TabData(iconData: Icons.help, title: ""),
-          TabData(iconData: Icons.people, title: ""),
-          TabData(iconData: Icons.store, title: ""),
+          _tabBtn(Icons.map),
+          _tabBtn(Icons.help),
+          _tabBtn(Icons.people),
+          _tabBtn(Icons.store),
         ],
         onTabChangedListener: _onItemTapped,
       ),

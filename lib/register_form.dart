@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './country_code_input.dart';
 import './checkbox_input.dart';
+import './phone_input.dart';
 
 class RegisterForm extends StatefulWidget {
   final String title;
@@ -44,8 +44,12 @@ class _RegisterFormState extends State<RegisterForm> {
             value: true,
             onChanged: (value) => null,
           ),
-          Icon(icon),
-          Text(label)
+          GestureDetector(
+            onTap: () => {},
+            child: Row(
+              children: <Widget>[Icon(icon), Text(label)],
+            ),
+          ),
         ],
       );
 
@@ -62,20 +66,20 @@ class _RegisterFormState extends State<RegisterForm> {
               padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 50.0),
               child: Column(children: <Widget>[
                 _buildInput('Nome', 'Digite seu nome'),
-                Row(
-                  children: <Widget>[
-                    Expanded(child: CountryCodeInput()),
-                    Expanded(
-                        child: _buildInput('Telefone', 'Número do telefone')),
-                  ],
-                ),
+                PhoneInput(),
                 _checkbox('Pode chamar no WhatsApp?'),
                 _buildInput('Email', 'Endereço de email'),
                 _buildInput('Cidade', 'Sua cidade'),
                 _buildInput('Estado', 'Seu estado'),
                 Column(
                   children: <Widget>[
-                    Text('Preciso de ajuda com:'),
+                    Padding(
+                      padding: EdgeInsets.only(top: 20.0),
+                      child: Text(
+                        'Preciso de ajuda com:',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
+                    ),
                     _helpItem('Compras', Icons.local_grocery_store),
                     _helpItem('Alimentação', Icons.local_dining),
                     _helpItem('Preciso conversar', Icons.phone_in_talk),

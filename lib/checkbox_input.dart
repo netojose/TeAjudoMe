@@ -10,7 +10,10 @@ class CheckboxInput extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Text(label),
+        GestureDetector(
+          child: Text(label),
+          onTap: () => {},
+        ),
         Checkbox(
           value: true,
           onChanged: (value) => null,
