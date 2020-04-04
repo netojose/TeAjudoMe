@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import './register_form.dart';
 
 class CanHelp extends StatelessWidget {
-  const CanHelp({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return Text('Posso ajudar');
+    return RegisterForm(
+      title: 'Posso ajudar',
+    );
   }
 }
