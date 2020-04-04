@@ -32,10 +32,6 @@ class PhoneInput extends StatelessWidget {
             Expanded(
               flex: 1,
               child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Número',
-                  hintText: 'Número do telefone',
-                ),
                 keyboardType: TextInputType.number,
               ),
             ),

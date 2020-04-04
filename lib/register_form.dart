@@ -50,10 +50,32 @@ class _RegisterFormState extends State<RegisterForm> {
           GestureDetector(
             onTap: () => {},
             child: Row(
-              children: <Widget>[Icon(icon), Text(label)],
+              children: <Widget>[
+                Icon(
+                  icon,
+                  color: Colors.blue,
+                ),
+                Text(label)
+              ],
             ),
           ),
         ],
+      );
+
+  Widget _agreeInput() => Padding(
+        padding: EdgeInsets.symmetric(vertical: 20.0),
+        child: Row(
+          children: <Widget>[
+            Checkbox(value: false, onChanged: null),
+            Flexible(
+              child: GestureDetector(
+                onTap: () => null,
+                child: Text(
+                    'Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários'),
+              ),
+            ),
+          ],
+        ),
       );
 
   @override
@@ -92,6 +114,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   ],
                 ),
                 _buildInput('Outras solicitações', 'O que mais você precisa?'),
+                _agreeInput(),
                 _buildSubmitButton(),
               ]),
             )),
