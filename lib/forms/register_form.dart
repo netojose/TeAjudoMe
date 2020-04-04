@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './checkbox_input.dart';
-import './phone_input.dart';
+import '../input/checkbox_input.dart';
+import '../input/phone_input.dart';
 
 class RegisterForm extends StatefulWidget {
   final String title;

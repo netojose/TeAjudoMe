@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import './register_form.dart';
+import '../forms/register_form.dart';
 
-class NeedHelp extends StatelessWidget {
+class CanHelp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RegisterForm(
-      title: 'Preciso de ajuda',
+      title: 'Posso ajudar',
     );
   }
 }

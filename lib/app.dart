@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-import './map.dart';
-import './need_help.dart';
-import './can_help.dart';
-import './i_have_a_store.dart';
+import './screens/map.dart';
+import './screens/need_help.dart';
+import './screens/can_help.dart';
+import './screens/i_have_a_store.dart';
 
 class App extends StatefulWidget {
   App({Key key}) : super(key: key);
