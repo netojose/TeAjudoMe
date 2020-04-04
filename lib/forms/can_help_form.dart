@@ -17,6 +17,23 @@ class CanHelpForm extends StatefulWidget {
 
 class _CanHelpFormState extends State<CanHelpForm> {
   final _formKey = GlobalKey<FormState>();
+  final Map<String, dynamic> formData = {
+    'name': null,
+    'phone': '',
+    'whatsapp': null,
+    'email': null,
+    'city': null,
+    'state': null,
+    'more': null,
+    'agree': null,
+  };
+
+  void _handleSumnit() {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+      print(formData);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +47,14 @@ class _CanHelpFormState extends State<CanHelpForm> {
             child: Padding(
               padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 50.0),
               child: Column(children: <Widget>[
-                TextInput(label: 'Nome', hint: 'Digite seu nome'),
-                PhoneInput(),
+                TextInput(
+                  label: 'Nome',
+                  hint: 'Digite seu nome',
+                  onSaved: (v) => formData['name'] = v,
+                ),
+                PhoneInput(
+                  onSaved: (v) => formData['phone'] = v,
+                ),
                 CheckboxInput(
                   label: 'Pode chamar no WhatsApp?',
                 ),
@@ -39,15 +62,27 @@ class _CanHelpFormState extends State<CanHelpForm> {
                   label: 'Email',
                   hint: 'Endereço de email',
                   inputType: TextInputType.emailAddress,
+                  onSaved: (v) => formData['email'] = v,
                 ),
-                TextInput(label: 'Cidade', hint: 'Sua cidade'),
-                TextInput(label: 'Estado', hint: 'Seu estado'),
+                TextInput(
+                  label: 'Cidade',
+                  hint: 'Sua cidade',
+                  onSaved: (v) => formData['city'] = v,
+                ),
+                TextInput(
+                  label: 'Estado',
+                  hint: 'Seu estado',
+                  onSaved: (v) => formData['state'] = v,
+                ),
                 HelpListInput(),
                 TextInput(
-                    label: 'Outras solicitações',
-                    hint: 'O que mais você precisa?'),
+                  label: 'Outras solicitações',
+                  hint: 'O que mais você precisa?',
+                  isRequired: false,
+                  onSaved: (v) => formData['more'] = v,
+                ),
                 AgreeInput(),
-                SubmitInput(),
+                SubmitInput(handleSubmit: _handleSumnit),
               ]),
             )),
       ),

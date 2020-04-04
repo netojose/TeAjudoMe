@@ -19,7 +19,10 @@ class HelpListInput extends StatelessWidget {
                   icon,
                   color: Colors.blue,
                 ),
-                Text(label)
+                Padding(
+                  padding: EdgeInsets.only(left: 5.0),
+                  child: Text(label),
+                ),
               ],
             ),
           ),
