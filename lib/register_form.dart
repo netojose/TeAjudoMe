@@ -14,7 +14,10 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
 
-  Widget _buildInput(String label, String hint) => TextFormField(
+  Widget _buildInput(String label, String hint,
+          {TextInputType inputType = TextInputType.text}) =>
+      TextFormField(
+        keyboardType: inputType,
         decoration: InputDecoration(labelText: label, hintText: hint),
         validator: (value) {
           if (value.isEmpty) {
@@ -68,7 +71,8 @@ class _RegisterFormState extends State<RegisterForm> {
                 _buildInput('Nome', 'Digite seu nome'),
                 PhoneInput(),
                 _checkbox('Pode chamar no WhatsApp?'),
-                _buildInput('Email', 'Endereço de email'),
+                _buildInput('Email', 'Endereço de email',
+                    inputType: TextInputType.emailAddress),
                 _buildInput('Cidade', 'Sua cidade'),
                 _buildInput('Estado', 'Seu estado'),
                 Column(
