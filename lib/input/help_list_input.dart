@@ -1,50 +1,45 @@
 import 'package:flutter/material.dart';
 
-class HelpListInput extends StatelessWidget {
-  HelpListInput({
-    Key key,
-  }) : super(key: key);
+import './checkbox_group_input.dart';
 
-  Widget _item(String label, IconData icon) => Row(
-        children: <Widget>[
-          Checkbox(
-            value: true,
-            onChanged: (value) => null,
-          ),
-          GestureDetector(
-            onTap: () => {},
-            child: Row(
-              children: <Widget>[
-                Icon(
-                  icon,
-                  color: Colors.blue,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 5.0),
-                  child: Text(label),
-                ),
-              ],
-            ),
-          ),
-        ],
-      );
+class HelpListInput extends StatelessWidget {
+  final String label;
+  final bool showPsychologist;
+
+  HelpListInput({Key key, @required this.label, this.showPsychologist})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(top: 20.0),
-          child: Text(
-            'Preciso de ajuda com:',
-            style: TextStyle(fontSize: 16.0),
-          ),
-        ),
-        _item('Compras', Icons.local_grocery_store),
-        _item('Alimentação', Icons.local_dining),
-        _item('Preciso conversar', Icons.phone_in_talk),
-        _item('Farmácia', Icons.local_pharmacy),
-        _item('Passear com o dog', Icons.pets),
+    return CheckboxGroupInput(
+      label: label,
+      moreText: 'Outros',
+      items: [
+        if (showPsychologist != null)
+          {
+            'label': 'Sou psicólogo',
+            'icon': Icons.favorite,
+          },
+        {
+          'label': 'Compras',
+          'icon': Icons.local_grocery_store,
+        },
+        {
+          'label': 'Alimentação',
+          'icon': Icons.local_dining,
+        },
+        {
+          'label': 'Preciso conversar',
+          'icon': Icons.phone_in_talk,
+        },
+        {
+          'label': 'Farmácia',
+          'icon': Icons.local_pharmacy,
+        },
+        {
+          'label': 'Passear com o dog',
+          'icon': Icons.pets,
+        },
       ],
     );
   }

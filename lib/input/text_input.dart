@@ -6,7 +6,7 @@ class TextInput extends StatelessWidget {
     this.hint,
     this.inputType = TextInputType.text,
     this.isRequired = true,
-    @required this.label,
+    this.label,
     @required this.onSaved,
   }) : super(key: key);
 

@@ -4,18 +4,20 @@ import '../input/phone_input.dart';
 import '../input/text_input.dart';
 import '../input/agree_input.dart';
 import '../input/submit_input.dart';
-import '../input/help_list_input.dart';
 
-class CanHelpForm extends StatefulWidget {
-  final String type;
+class RegisterForm extends StatefulWidget {
+  final String title;
+  final String header;
+  final Widget extra;
 
-  const CanHelpForm({Key key, this.type}) : super(key: key);
+  const RegisterForm({Key key, @required this.title, this.header, this.extra})
+      : super(key: key);
 
   @override
-  _CanHelpFormState createState() => _CanHelpFormState();
+  _RegisterFormState createState() => _RegisterFormState();
 }
 
-class _CanHelpFormState extends State<CanHelpForm> {
+class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
   final Map<String, dynamic> formData = {
     'name': null,
@@ -39,7 +41,7 @@ class _CanHelpFormState extends State<CanHelpForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Posso ajudar'),
+        title: Text(widget.title),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -47,9 +49,19 @@ class _CanHelpFormState extends State<CanHelpForm> {
             child: Padding(
               padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 50.0),
               child: Column(children: <Widget>[
+                if (widget.header != null)
+                  Padding(
+                    padding: EdgeInsets.only(top: 15.0),
+                    child: Text(
+                      widget.header,
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
                 TextInput(
                   label: 'Nome',
-                  hint: 'Digite seu nome',
+                  // hint: 'Nome',
                   onSaved: (v) => formData['name'] = v,
                 ),
                 PhoneInput(
@@ -74,13 +86,7 @@ class _CanHelpFormState extends State<CanHelpForm> {
                   hint: 'Seu estado',
                   onSaved: (v) => formData['state'] = v,
                 ),
-                HelpListInput(),
-                TextInput(
-                  label: 'Outras solicitações',
-                  hint: 'O que mais você precisa?',
-                  isRequired: false,
-                  onSaved: (v) => formData['more'] = v,
-                ),
+                if (widget.extra != null) widget.extra,
                 AgreeInput(),
                 SubmitInput(handleSubmit: _handleSumnit),
               ]),
