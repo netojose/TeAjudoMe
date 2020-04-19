@@ -69,8 +69,8 @@ class _CheckboxGroupInputState extends State<CheckboxGroupInput> {
         ),
         if (widget.prepend != null) widget.prepend,
         ...widget.items
-            .map(
-                (item) => _item(item['label'], item['icon'], () => null, false))
+            .map((item) =>
+                _item(item['label'], item['icon'], (bool value) => null, false))
             .toList(),
         _item(widget.moreText, null, _toggleCustomOption, showCustomOption),
         if (showCustomOption) TextInput(onSaved: (String value) => null)

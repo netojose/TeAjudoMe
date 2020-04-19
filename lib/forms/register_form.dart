@@ -87,7 +87,15 @@ class _RegisterFormState extends State<RegisterForm> {
                   onSaved: (v) => formData['state'] = v,
                 ),
                 if (widget.extra != null) widget.extra,
-                AgreeInput(),
+                AgreeInput(
+                  validator: (v) {
+                    if (!v) {
+                      return 'Você precisa aceitar os termos';
+                    }
+                    return null;
+                  },
+                  onSaved: (v) => formData['agree'] = v,
+                ),
                 SubmitInput(handleSubmit: _handleSumnit),
               ]),
             )),
