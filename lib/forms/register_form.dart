@@ -61,12 +61,22 @@ class _RegisterFormState extends State<RegisterForm> {
                   ),
                 TextInput(
                   label: 'Nome',
-                  // hint: 'Nome',
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Este campo precisa ser preenchido';
+                    }
+                    return null;
+                  },
                   onSaved: (v) => formData['name'] = v,
                 ),
                 PhoneInput(
-                  onSaved: (v) => formData['phone'] = v,
-                ),
+                    onSaved: (v) => formData['phone'] = v,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Este campo precisa ser preenchido';
+                      }
+                      return null;
+                    }),
                 CheckboxInput(
                   label: 'Pode chamar no WhatsApp?',
                   onSaved: (v) => formData['whatsapp'] = v,
@@ -75,16 +85,34 @@ class _RegisterFormState extends State<RegisterForm> {
                   label: 'Email',
                   hint: 'Endereço de email',
                   inputType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Este campo precisa ser preenchido';
+                    }
+                    return null;
+                  },
                   onSaved: (v) => formData['email'] = v,
                 ),
                 TextInput(
                   label: 'Cidade',
                   hint: 'Sua cidade',
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Este campo precisa ser preenchido';
+                    }
+                    return null;
+                  },
                   onSaved: (v) => formData['city'] = v,
                 ),
                 TextInput(
                   label: 'Estado',
                   hint: 'Seu estado',
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Este campo precisa ser preenchido';
+                    }
+                    return null;
+                  },
                   onSaved: (v) => formData['state'] = v,
                 ),
                 if (widget.extra != null) widget.extra,
