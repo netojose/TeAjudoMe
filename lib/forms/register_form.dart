@@ -26,7 +26,6 @@ class _RegisterFormState extends State<RegisterForm> {
     'email': null,
     'city': null,
     'state': null,
-    'more': null,
     'agree': null,
   };
 
