@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../input/checkbox_input.dart';
 import '../input/phone_input.dart';
+import '../input/checkbox_input.dart';
 import '../input/text_input.dart';
 import '../input/agree_input.dart';
 import '../input/submit_input.dart';
@@ -69,6 +69,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 ),
                 CheckboxInput(
                   label: 'Pode chamar no WhatsApp?',
+                  onSaved: (v) => formData['whatsapp'] = v,
                 ),
                 TextInput(
                   label: 'Email',
